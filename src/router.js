@@ -21,7 +21,9 @@ const router = new VueRouter({
         // when /auth/login is matched
         { path: "home", component: () => import('./components/pages/Home.vue') },
         { path: "home", component: () => import('./components/pages/Home.vue') },
-        { path: "users", component: () => import('./components/pages/Users.vue') }
+        { path: "users", component: () => import('./components/pages/Users.vue') },
+        { path: "user/:id", component: () => import('./components/pages/User.vue') },
+        { path: "products", component: () => import('./components/pages/Product/index.vue') },
       ]
     }
   ]

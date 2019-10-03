@@ -10,9 +10,13 @@
         <a href="/users">Users</a>
       </li>
       <li>
+        <a href="/products">Products</a>
+      </li>
+      <li>
         <a href="/auth/login">Login</a>
       </li>
     </ul>
+    <hr/>
     <router-view></router-view>
   </div>
 </template>

@@ -2,13 +2,12 @@
     <div>
         <div v-if="loading">Loading...</div>
         <div v-else-if="error">{{error}}</div>
-        <ul v-else>
-            <li :key="index" v-for="(user, index) in users">
-                <a :href="'/user/' + user.id">{{user.name}}</a>
-            </li>
-        </ul>
+        <div v-else>
+            <p>id: {{user.id}}</p>
+            <p>name: {{user.name}}</p>
+        </div>
     </div>
-</template>
+</template>>
 <script>
 import axios from "axios";
 
@@ -16,21 +15,21 @@ export default {
     data() {
         return {
             loading: false,
-            users: [],
+            user: {},
             error: ""
         };
     },
     created() {
         this.loading = true;
-        this.getUsers();
+        this.getUser(this.$route.params.id);
     },
     methods: {
-        getUsers() {
+        getUser(id) {
             axios
-                .get("https://jsonplaceholder.typicode.com/users")
+                .get("https://jsonplaceholder.typicode.com/users/" + id)
                 .then(res => {
                     this.loading = false;
-                    this.users = res.data;
+                    this.user = res.data;
                 })
                 .catch(err => {
                     this.loading = false;
