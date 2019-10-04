@@ -3,7 +3,7 @@
     <p>Login Layout</p>
     <ul>
       <li>
-        <a href="/home">Home</a>
+        <router-link to="/home">Home</router-link>
       </li>
     </ul>
     <hr/>

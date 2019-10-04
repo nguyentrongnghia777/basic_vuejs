@@ -1,23 +1,26 @@
 <template>
     <div>
-        <b-modal id="modal-1" title="Detail">
-            <div class="my-4">
-                <h3>{{product.title}}</h3>
-                <p>{{product.body}}</p>
-            </div>
-        </b-modal>
-
         <div v-if="loading">Loading...</div>
         <div v-else-if="error">{{error}}</div>
         <div v-else>
             <ul>
-                <li :key="index" v-for="(product, index) in products">{{product.title}} <button class="btn btn-secondary" v-on:click="viewDetail(product)">detail</button></li>
+                <li :key="index" v-for="(product, index) in products">
+                    {{product.title}}
+                    <button class="btn btn-secondary" v-on:click="viewDetail(product)">View</button> -
+                    <router-link :to="'/products/' + product.id" class="btn btn-secondary">Page detail</router-link>
+                </li>
             </ul>
         </div>
+        <b-modal id="modal-1" title="Detail" size="xl" hide-footer @hide="callbackHideDetail">
+            <div class="my-4">
+                <detail-item :product="product"></detail-item>
+            </div>
+        </b-modal>
     </div>
 </template>
 <script>
 import axios from "axios";
+import DetailItem from "./DetailItem.vue";
 
 export default {
     data() {
@@ -25,19 +28,17 @@ export default {
             loading: false,
             products: [],
             error: "",
-            product: {}
+            product: {},
         };
     },
     components: {
-
+        DetailItem: DetailItem
     },
     created() {
         this.loading = true;
         this.getProducts();
     },
-    mounted() {
-        
-    },
+    mounted() {},
     methods: {
         getProducts() {
             axios
@@ -51,14 +52,13 @@ export default {
                     this.error = err.toString();
                 });
         },
-        callback(msg) {
-            this.$notify(`Modal dismissed with msg '${msg}'.`);
+        callbackHideDetail() {
+            console.log('close modal');
         },
         viewDetail(item) {
             this.product = item;
-            console.log(this.product);
-            this.$bvModal.show('modal-1');
-        }
+            this.$bvModal.show("modal-1");
+        },
     }
 };
 </script>

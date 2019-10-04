@@ -4,16 +4,19 @@
     <br />
     <ul>
       <li>
-        <a href="/home">Home</a>
+        <router-link to="/home">Home</router-link>
       </li>
       <li>
-        <a href="/users">Users</a>
+        <router-link to="/users">Users</router-link>
       </li>
       <li>
-        <a href="/products">Products</a>
+        <router-link to="/products">Products</router-link>
       </li>
       <li>
-        <a href="/auth/login">Login</a>
+        <router-link to="/demo">Demo</router-link>
+      </li>
+      <li>
+        <router-link to="/auth/login">Login</router-link>
       </li>
     </ul>
     <hr/>

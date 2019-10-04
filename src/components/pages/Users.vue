@@ -4,7 +4,7 @@
         <div v-else-if="error">{{error}}</div>
         <ul v-else>
             <li :key="index" v-for="(user, index) in users">
-                <a :href="'/user/' + user.id">{{user.name}}</a>
+                <router-link :to="'/users/' + user.id">{{user.name}}</router-link>
             </li>
         </ul>
     </div>
