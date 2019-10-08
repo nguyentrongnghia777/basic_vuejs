@@ -7,7 +7,6 @@
     </div>
 </template>
 <script>
-import axios from "axios";
 import EmitEdit from "./EmitEdit.vue";
 
 export default {

@@ -19,7 +19,7 @@
     </div>
 </template>
 <script>
-import axios from "axios";
+import Axios from "axios";
 import DetailItem from "./DetailItem.vue";
 
 export default {
@@ -41,7 +41,7 @@ export default {
     mounted() {},
     methods: {
         getProducts() {
-            axios
+            Axios
                 .get("https://jsonplaceholder.typicode.com/posts")
                 .then(res => {
                     this.loading = false;

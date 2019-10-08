@@ -18,16 +18,11 @@ const router = new VueRouter({
         },
         {
             path: "/",
-            redirect: "/home",
             component: () => import("./components/layout/AppLayout.vue"),
             children: [
                 // when /auth/login is matched
                 {
-                    path: "home",
-                    component: () => import("./components/pages/Home.vue")
-                },
-                {
-                    path: "home",
+                    path: "",
                     component: () => import("./components/pages/Home.vue")
                 },
                 {
@@ -52,9 +47,21 @@ const router = new VueRouter({
                     path: "demo",
                     component: () =>
                         import("./components/pages/Demo/EmitDashboard.vue")
+                },
+                {
+                    path: "article",
+                    component: () => import("./components/pages/Article/List.vue")
+                },
+                {
+                    path: "article/:id",
+                    component: () => import("./components/pages/Article/Create.vue")
+                },
+                {
+                    path: "*",
+                    component: () => import("./components/pages/NotFound.vue")
                 }
             ]
-        }
+        },
     ]
 });
 
