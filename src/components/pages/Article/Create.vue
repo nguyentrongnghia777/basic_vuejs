@@ -24,6 +24,10 @@
                 />
             </div>
             <div class="form-group">
+                <label>Content</label>
+                <editor v-model="article.content" :init="editorInit"></editor>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-primary" v-on:click="createArticle">Save</button>
             </div>
         </div>
@@ -32,9 +36,12 @@
 <script>
 import Axios from "axios";
 import Select2 from "v-select2-component";
+import Editor from '@tinymce/tinymce-vue';
+
 export default {
     components: {
-        Select2
+        Select2,
+        Editor,
     },
     data() {
         return {
@@ -44,9 +51,36 @@ export default {
                 content: "",
                 category: [1, 2],
                 tag: [1, 2, 3],
+                content: "",
             },
             myOptions: [], // or [{id: key, text: value}, {id: key, text: value}]
-            settingsCategory: {}
+            settingsCategory: {},
+            editorInit: {
+                branding    : false,
+                skin        : 'lightgray',
+                plugins     : [ 'link', 'table', 'paste' ],
+                toolbar     : 'bold underline link table',
+                language    : 'ja',
+                menubar: false,
+                forced_root_block: '',
+                relative_urls: false,
+                convert_urls: false,
+                paste_as_text: true,
+                link_title: false,
+                link_class_list: [
+                    {title: 'アンダーラインなし', value: 's-article_textlink'}
+                ],
+                table_default_attributes: {
+                    'class': 's-article_table'
+                },
+                formats:{
+                    bold: { inline: 'span', attributes: { 'class': 's-article_textstrong' } },
+                    underline: { inline: 'span', attributes: { 'class': 's-article_p-marker' } }
+                },
+                height: 200,
+                resize: false,
+                content_css: '/vender/css/editor.css?v=1.2'
+            }
         };
     },
     created() {
@@ -74,8 +108,39 @@ export default {
         },
         getCategory() {
             this.settingsCategory = {
-                placeholder: "Search for a repository",
+                placeholder: "検索する",
                 multiple: true,
+                language: {
+                    errorLoading: function() {
+                        return "結果が読み込まれませんでした";
+                    },
+                    inputTooLong: function(e) {
+                        var t = e.input.length - e.maximum,
+                            n = t + " 文字を削除してください";
+                        return n;
+                    },
+                    inputTooShort: function(e) {
+                        var t = e.minimum - e.input.length,
+                            n = "少なくとも " + t + " 文字を入力してください";
+                        return n;
+                    },
+                    loadingMore: function() {
+                        return "検索中...";
+                    },
+                    maximumSelected: function(e) {
+                        var t = e.maximum + " 件しか選択できません";
+                        return t;
+                    },
+                    noResults: function() {
+                        return "対象が見つかりません";
+                    },
+                    searching: function() {
+                        return "検索しています…";
+                    },
+                    removeAllItems: function() {
+                        return "すべてのアイテムを削除";
+                    }
+                },
                 ajax: {
                     url: "https://api.github.com/search/repositories",
                     dataType: "json",
