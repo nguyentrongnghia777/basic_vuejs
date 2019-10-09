@@ -13,13 +13,16 @@
                 <router-link to="/products">Products</router-link>
             </li>
             <li>
-                <router-link to="/demo">Demo</router-link>
-            </li>
-            <li>
                 <router-link to="/article">Articles</router-link>
             </li>
             <li>
                 <router-link to="/auth/login">Login</router-link>
+            </li>
+            <li>
+                <router-link to="/demo">Demo</router-link>
+            </li>
+            <li>
+                <router-link to="/demo/vif">Demo v-if</router-link>
             </li>
         </ul>
         <hr />

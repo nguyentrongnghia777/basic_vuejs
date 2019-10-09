@@ -24,7 +24,7 @@ export default {
     },
     data() {
         return {
-            dataTotal: '',
+            dataTotal: 0,
             dataItemTotalDemoEmit: {
                 count: 2,
             }

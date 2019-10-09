@@ -49,6 +49,11 @@ const router = new VueRouter({
                         import("./components/pages/Demo/EmitDashboard.vue")
                 },
                 {
+                    path: "demo/vif",
+                    component: () =>
+                        import("./components/pages/Demo/Vif.vue")
+                },
+                {
                     path: "article",
                     component: () => import("./components/pages/Article/List.vue")
                 },
