@@ -1,6 +1,9 @@
 <template>
     <div>
-        <div>create article</div>
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Create article</h1>
+        </div>
         <div name="form">
             <div class="form-group">
                 <label>Title</label>
@@ -93,7 +96,7 @@ export default {
                 showClose: true,
                 locale: "ja",
                 defaultDate: "11/1/2019",
-                disabledDates: [new Date(2019, 11 - 1, 21), "11/22/2019 00:53"],
+                disabledDates: [new Date(2019, 11 - 1, 21), "11/22/2019 00:53"]
                 // custom icons
                 // icons: {
                 //     time: "far fa-clock",
