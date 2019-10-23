@@ -58,7 +58,7 @@ const router = new VueRouter({
                     component: () => import("./components/pages/Article/List.vue")
                 },
                 {
-                    path: "article/:id",
+                    path: "article/create",
                     component: () => import("./components/pages/Article/Create.vue")
                 },
                 {
