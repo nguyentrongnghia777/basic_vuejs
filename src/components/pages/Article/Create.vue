@@ -49,10 +49,9 @@ export default {
             loading: false,
             article: {
                 title: "",
-                content: "",
-                category: [1, 2],
+                category: [1, 2, 3],
                 tag: [1, 2, 3],
-                content: "",
+                content: "hello<br />world",
                 createdAt: new Date()
             },
             myOptions: [], // or [{id: key, text: value}, {id: key, text: value}]
