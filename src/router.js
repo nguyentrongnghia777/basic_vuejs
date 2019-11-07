@@ -62,6 +62,10 @@ const router = new VueRouter({
                     component: () => import("./components/pages/Article/Create.vue")
                 },
                 {
+                    path: "booking",
+                    component: () => import("./components/pages/Booking/Index.vue")
+                },
+                {
                     path: "*",
                     component: () => import("./components/pages/NotFound.vue")
                 }

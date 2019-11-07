@@ -35,7 +35,11 @@ export default {
         EmitEdit: EmitEdit
     },
     created() {},
-    mounted() {},
+    mounted() {
+        setTimeout(() => {
+            this.total = 2; // parent change, child not change
+        }, 2000);
+    },
     computed: {
         showCustomTotal() {
             return parseInt(this.total) + 1;
@@ -50,10 +54,10 @@ export default {
         },
         showCustomTotal() {
             console.log('watch computed showCustomTotal', this.showCustomTotal);
-
-            // demo watch key object
             this.message.text = 'c';
         },
+
+        // demo watch key object base on computed => return this key
         getTextMessage() {
             console.log('watch computed getTextMessage', this.message.text);
         }
