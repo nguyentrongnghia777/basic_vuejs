@@ -40,6 +40,7 @@
     </div>
 </template>
 <script>
+import $ from "jquery";
 import Axios from "axios";
 import ModelCategory from "@/models/category.js";
 export default {

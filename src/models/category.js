@@ -1,3 +1,4 @@
+import $ from "jquery";
 import Axios from "axios";
 import HelperCommon from "@/helpers/common.js";
 export default {

@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import $ from "jquery";
 import ModelCategory from "@/models/category.js";
 export default {
     props: {
